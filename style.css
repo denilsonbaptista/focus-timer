@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #121214;
+
+  --base-color: 100;
+  --bg-primary-light: hsla(var(--base-color), 100%, 63%, 0.13);
+  --primary-color: hsl(var(--base-color), 100%, 63%);
+
+  --text-color: #ffffff;
+
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  font-family: "Roboto", sans-serif;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+/* Aqui pegamos o fill do svg para mudar a cor utilizando o hue */
+.play svg path,
+.pause svg path,
+.sound-on svg path {
+  fill: var(--primary-color);
+}
+
+#timer {
+  font-size: 8.8rem;
+
+  display: flex;
+}
+
+#controls {
+  background-color: var(--bg-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9999px; /* pill button*/
+}
