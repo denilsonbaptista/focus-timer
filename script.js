@@ -52,3 +52,8 @@ buttonSoundOn.addEventListener("click", function () {
   buttonSoundOn.classList.add("hide")
   buttonSoundOff.classList.remove("hide")
 })
+
+buttonSet.addEventListener("click", function () {
+  minutes = prompt("Quantos minutos")
+  minutesDisplay.textContent = minutes
+})
