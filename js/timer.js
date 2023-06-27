@@ -1,35 +1,51 @@
-function updateTimerDisplay(minutes, seconds) {
-  minutesDisplay.textContent = String(minutes).padStart(2, "0")
-  secondsDisplay.textContent = String(seconds).padStart(2, "0")
-}
+export function Timer({
+  minutesDisplay,
+  secondsDisplay,
+  resetControls,
+}) {
+  let timerTimeOut
 
-function resetTimer() {
-  updateTimerDisplay(minutes, 0)
-  clearTimeout(timerTimeOut)
-}
+  function updateTimerDisplay(minutes, seconds) {
+    minutesDisplay.textContent = String(minutes).padStart(2, "0")
+    secondsDisplay.textContent = String(seconds).padStart(2, "0")
+  }
 
-function countdown() {
-  timerTimeOut = setTimeout(function () {
-    let minutes = Number(minutesDisplay.textContent)
-    let seconds = Number(secondsDisplay.textContent)
-
+  function resetTimer() {
     updateTimerDisplay(minutes, 0)
+    clearTimeout(timerTimeOut)
+  }
 
-    if (minutes <= 0) {
-      resetControls()
-      return
-    }
+  function countdown() {
+    timerTimeOut = setTimeout(function () {
+      let minutes = Number(minutesDisplay.textContent)
+      let seconds = Number(secondsDisplay.textContent)
 
-    if (seconds <= 0) {
-      seconds = 60
-      --minutes
-    }
+      updateTimerDisplay(minutes, 0)
 
-    updateTimerDisplay(minutes, String(seconds - 1))
+      if (minutes <= 0) {
+        resetControls()
+        return
+      }
 
-    countdown()
-  }, 1000)
+      if (seconds <= 0) {
+        seconds = 60
+        --minutes
+      }
+
+      updateTimerDisplay(minutes, String(seconds - 1))
+
+      countdown()
+    }, 1000)
+  }
+
+  function hold() {
+    clearTimeout(timerTimeOut)
+  }
+
+  return {
+    updateTimerDisplay,
+    resetTimer,
+    countdown,
+    hold,
+  }
 }
-
-// named export
-export {countdown, resetTimer}
