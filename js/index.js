@@ -1,6 +1,5 @@
 import Controls from "./controls.js"
 import Timer from "./timer.js"
-import Evento from "./event.js"
 
 const buttonPlay = document.querySelector(".play")
 const buttonPause = document.querySelector(".pause")
